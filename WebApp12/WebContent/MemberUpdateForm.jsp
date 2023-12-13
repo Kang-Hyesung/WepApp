@@ -9,7 +9,7 @@
 	// 조회해서 얻어낸 데이터를 폼에 구성
 	
 	String sid = request.getParameter("sid");
-	String name = "";  
+	String name = "";    
 	String tel = "";
 	
 	MemberDAO dao = new MemberDAO();
