@@ -9,22 +9,23 @@
 	String eng = request.getParameter("eng");
 	String mat = request.getParameter("mat");
 	
+	// MemberScoreDAO 인스턴스 생성
 	MemberScoreDAO dao = new MemberScoreDAO();
 	
 	try
 	{
 		dao.connection();
 		
-		MemberScoreDTO member = new MemberScoreDTO();
+		MemberScoreDTO score = new MemberScoreDTO();
 		
-		member.setSid(sid);
-		member.setKor(Integer.parseInt(kor));
-		member.setEng(Integer.parseInt(eng));
-		member.setMat(Integer.parseInt(mat));
+		score.setSid(sid);
+		score.setKor(Integer.parseInt(kor));
+		score.setEng(Integer.parseInt(eng));
+		score.setMat(Integer.parseInt(mat));
 		
+		dao.modify(score);
 		
-		dao.modify(member);
-		
+		// 위 메소드 호출 결과 반환값을 활용한 분기 처리 가능
 	}
 	catch(Exception e)
 	{
@@ -48,15 +49,3 @@
 	// 이후 보여지는 페이지 구성 모두 삭제
 	
 %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-<body>
-
-</body>
-</html>

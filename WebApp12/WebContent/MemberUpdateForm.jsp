@@ -10,7 +10,8 @@
 	// 조회해서 얻어낸 데이터를 폼에 구성
 	
 	String sid = request.getParameter("sid");
-	int kor,eng,mat;
+	String name = "";
+	String tel = "";
 	
 	MemberDAO dao = new MemberDAO();
 	
@@ -20,7 +21,8 @@
 		dao.connection();
 		
 		MemberDTO member = dao.searchMember(sid);
-		sid = member.getSid();
+		name = member.getName();
+		tel = member.getTel();
 	}
 	catch(Exception e)
 	{

@@ -130,6 +130,23 @@ public class MemberScoreDAO
 		
 		return result;
 	}
+	
+	// 메소드 추가
+	// 성적 데이터 삭제 담당 메소드
+	public int remove(String sid) throws SQLException
+	{
+		int result = 0;
+		
+		String sql = "DELETE FROM TBL_MEMBERSCORE WHERE SID=?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, sid);
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		
+		return result;
+	}
 }
 
 

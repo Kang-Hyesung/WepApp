@@ -132,7 +132,7 @@
 
 <div>
 	<h1>회원 <span style="color: red;">성적</span> 관리 및 
-	<span style="color: green;">입력</span> 페이지</h1>
+	<span style="color: green;">수정</span> 페이지</h1>
 	<hr>
 </div>
 
@@ -142,13 +142,12 @@
 <br>
 
 <div>
-	<!-- 성적 데이터 입력 폼 구성 -->
+	<!-- 성적 데이터 수정 폼 구성 -->
 	<form action="MemberScoreUpdate.jsp?sid=<%=sid %>" method="post" id="memberScoreForm">
 		<table class="table">
 			<tr>
 				<th>번호</th>
 				<td>
-					<!-- 1 -->
 					<%=sid %>
 				</td>
 				<td></td>
@@ -156,7 +155,6 @@
 			<tr>
 				<th>이름</th>
 				<td>
-					<!-- 문정환 -->
 					<%=name %>
 				</td>
 				<td></td>
@@ -192,7 +190,7 @@
 		<br>
 		
 		<a href="javascript:memberScoreSubmit()"><button type="button">수정하기</button></a>
-		<a href="javascript:memberScoreReset()"><button type="button">취소하기</button></a>
+		<a href="javascript:memberScoreReset()"><button type="button">되돌리기</button></a>
 		<a href="MemberScoreSelect.jsp"><button type="button">목록으로</button></a>
 		
 	</form>
