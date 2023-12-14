@@ -32,7 +32,16 @@
 			str.append(				"<button type='button' class='btn01'>수정</button>");
 			str.append(			"</a>");
 			
-			str.append("		<a>");
+			// memberDelete(1, '노은하')
+			
+			// ※ 자바스크립트에서 사용할 수 있는 따음표의 종류
+			//    1 "" 2'' 3 \"\"
+			//    일반적으로 따음표가 두 번 중첩되어 사용하게 되면
+			//    1 과 2 를 사용하면 된다.
+			//    하지만, 따음표가 세 번 중첨되어 사용될 경우
+			//    3 escape 를 사용해야 한다.
+			
+			str.append("		<a href='javascript:memberDelete(" + member.getSid() + ", \"" + member.getName() + "\")'>");
 			str.append("			<button type='button' class='btn01'>삭제</button>");
 			str.append("		</a>");
 			str.append("	</td>");
@@ -69,6 +78,33 @@
 <style type="text/css">
 	a {text-decoration: none;}
 </style>
+
+<script type="text/javascript">
+	function memberDelete(sid, name)
+	{
+		// 확인
+		// alert("함수 호출");
+		
+		// 확인
+		// alert("번호 : " + sid + ", 이름 : " + name);
+		
+		// 확인
+		// alert("번호 : " + sid + ", 이름 : " + name);
+		
+		var res = confirm("번호 : " + sid + ", 이름 : " + name + "\n이 회원의 정보를 정말 삭제하시겠습니까?");
+		
+		// 확인
+		// alert(res);   true / false 로 나옴
+		// confirm() 함수를 통해 호출되는 창은
+		// 사용자의 의사표현 결과에 따라
+		// true(확인) 또는 false(취소)를 반환하게 된다.
+		
+		// 클라이언트와 만나지 않는 페이지
+		if(res)
+			window.location.href="MemberDelete.jsp?sid=" + sid; // get 방식처럼 활용가능
+	}
+</script>
+
 </head>
 <body>
 
