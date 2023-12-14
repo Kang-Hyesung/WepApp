@@ -11,12 +11,12 @@
 		dao.connection();
 		
 		str.append("<table class='table'>");
-		str.append("		<tr>");
-		str.append("			<th style='width: 50px;'>번호</th>");
-		str.append("			<th style='width: 100px;'>이름</th>");
-		str.append("			<th style='width: 150px;'>전화번호</th>");
-		str.append("			<th style='width: 200px;'>관리</th>");
-		str.append("		</tr>");
+		str.append("	<tr>");
+		str.append("		<th style='width: 50px;'>번호</th>");
+		str.append("		<th style='width: 100px;'>이름</th>");
+		str.append("		<th style='width: 150px;'>전화번호</th>");
+		str.append("		<th style='width: 200px;'>관리</th>");
+		str.append("	</tr>");
 		
 		
 		
@@ -24,21 +24,21 @@
 		{
 			str.append("<tr>");
 			
-			str.append("			<td>" + member.getSid() +  "</td>");
-			str.append("			<td>" + member.getName() + "</td>");
-			str.append("			<td>" + member.getTel() + "</td>");
-			str.append("			<td>");
-			str.append("				<a href='MemberUpdateForm.jsp?sid="+ member.getSid() +"'>");
-			str.append(						"<button type='button' class='btn01'>수정</button>");
-			str.append(					"</a>");
+			str.append("	<td>" + member.getSid() +  "</td>");
+			str.append("	<td>" + member.getName() + "</td>");
+			str.append("	<td>" + member.getTel() + "</td>");
+			str.append("	<td>");
+			str.append("		<a href='MemberUpdateForm.jsp?sid="+ member.getSid() +"'>");
+			str.append(				"<button type='button' class='btn01'>수정</button>");
+			str.append(			"</a>");
 			
-			str.append("				<a>");
-			str.append("					<button type='button' class='btn01'>삭제</button>");
-			str.append("				</a>");
-			str.append("			</td>");
+			str.append("		<a>");
+			str.append("			<button type='button' class='btn01'>삭제</button>");
+			str.append("		</a>");
+			str.append("	</td>");
 			
-			str.append("		</tr>");
-		}
+			str.append("</tr>");
+		} 
 		
 		str.append("</table>");
 	}

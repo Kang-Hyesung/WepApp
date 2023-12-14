@@ -113,7 +113,8 @@ public class MemberDAO
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setString(1, sid);
+		// pstmt.setString(1, sid);
+		pstmt.setInt(1, Integer.parseInt(sid));
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -123,8 +124,50 @@ public class MemberDAO
 			member.setName(rs.getString(2));
 			member.setTel(rs.getString(3));
 		}
+		rs.close();
+		pstmt.close();
 		
 		return member;
 	}
 	
+	// 메소드 추가
+	// 회원 데이터 수정 담당 메소드
+	public int modify(MemberDTO member) throws SQLException
+	{
+		int result = 0;
+		
+		String sql = "UPDATE TBL_MEMBER SET NAME=?, TEL=? WHERE SID=?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		
+		pstmt.setString(1, member.getName());
+		pstmt.setString(2, member.getTel());
+		//pstmt.setString(3, member.getSid());
+		pstmt.setInt(3, Integer.parseInt(member.getSid()));
+		
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		
+		return result;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

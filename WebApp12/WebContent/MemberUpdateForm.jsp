@@ -1,3 +1,4 @@
+<%@page import="com.test.MemberDTO"%>
 <%@page import="com.test.MemberDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -19,7 +20,9 @@
 		// 데이터베이스 연결
 		dao.connection();
 		
-		MemberDTO member = dao.
+		MemberDTO member = dao.searchMember(sid);
+		name = member.getName();
+		tel = member.getTel();
 	}
 	catch(Exception e)
 	{
@@ -110,18 +113,22 @@
 
 <div>
 	<!-- 회원 데이터 수정 폼 구성 -->
-	<form action="MemberUpdate.jsp" method="post" id="memberForm">
+					<!-- 3방법 -->
+	<form action="MemberUpdate.jsp?sid=<%=sid %>" method="post" id="memberForm">
 		<table class="table">
 			<tr>
 				<th>번호</th>
-				<td>
-					1<!-- SID 받아와야 함 -->
+				<!-- <td>1</td> -->
+				<!-- name 속성이 없어서 가져올 수 없다(getparameter로 다음 jsp에서) -->
+				<td>	<!-- 1방법 -->
+					<%-- <input type="text" name="sid" value="<%=sid %>" disabled="disabled"> --%>
+					<%=sid %>
 				</td>
 			</tr>
 			<tr>
 				<th>이름(*)</th>
 				<td>
-					<input type="text" id="uName" name="uName">
+					<input type="text" id="uName" name="uName" value="<%=name%>">
 				</td>
 				<td>
 					<span class="errMsg" id="nameMsg">이름을 입력해야 합니다.</span>
@@ -130,11 +137,15 @@
 			<tr>
 				<th>전화번호</th>
 				<td>
-					<input type="text" id="uTel" name="uTel">
+					<input type="text" id="uTel" name="uTel" value="<%=tel %>">
 				</td>
 				<td></td>
 			</tr>
 		</table>
+		
+		
+		<%-- 2방법
+		 <input type="hidden" name="sid" value="<%=sid %>"> --%>
 		<br>
 		
 		<a href="javascript:memberSubmit()"><button type="button">수정하기</button></a>
