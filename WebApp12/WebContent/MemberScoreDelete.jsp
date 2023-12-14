@@ -10,10 +10,6 @@
 
 	MemberScoreDAO dao = new MemberScoreDAO();
 	
-	String addr = "";
-	
-	
-	
 	try
 	{
 		dao.connection();
