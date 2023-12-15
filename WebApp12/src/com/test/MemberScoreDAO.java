@@ -51,7 +51,9 @@ public class MemberScoreDAO
 	{
 		ArrayList<MemberScoreDTO> lists = new ArrayList<MemberScoreDTO>();
 		
-		String sql = "SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT, (KOR+ENG+MAT)/3,1 AS AVG , RANK() OVER(ORDER BY (KOR+ENG+MAT) DESC) AS RANK FROM VIEW_MEMBERSCORE ORDER BY SID";
+		String sql = "SELECT SID, NAME, KOR, ENG, MAT, (KOR+ENG+MAT) AS TOT, (KOR+ENG+MAT)/3,1 AS AVG , (RANK() OVER(ORDER BY (KOR+ENG+MAT) DESC)) AS RANK"
+				+ " FROM VIEW_MEMBERSCORE2"
+				+ " ORDER BY SID";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
@@ -68,6 +70,7 @@ public class MemberScoreDAO
 			score.setTot(rs.getInt(6));
 			score.setAvg(rs.getDouble(7));
 			score.setRank(rs.getInt(8));
+			//score.setRank(rs.getInt("RANK"));
 			
 			lists.add(score);
 		}
